@@ -44,12 +44,11 @@ function mapFromRecord(data: GetItemOutput): record {
   let record: record = {} as record;
   let aStrings = [
     "username",
-    "visited",
-    "visitAgain"
+    "visited"
   ];
 
   aStrings.forEach(recordName => {
-    if ( recordName === "visited" || recordName === "visitAgain" ) {
+    if ( recordName === "visited" ) {
       record[recordName] = data?.Item?.[recordName]?.SS ? data?.Item[recordName].SS : [];
     } else {
       record[recordName] = data?.Item?.[recordName]?.S ? data?.Item[recordName].S : "";
@@ -61,8 +60,7 @@ function mapFromRecord(data: GetItemOutput): record {
 
 export interface record {
   username: string,
-  visited: Array<string>,
-  visitAgain: Array<string>
+  visited: Array<string>
 }
 
 export const main = middyfy(getUserVisited);

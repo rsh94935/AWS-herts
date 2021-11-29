@@ -5,15 +5,15 @@ export default {
     visited: {
       type: 'array',
       items: {
-        type: 'string'
-      }
-    },
-    visitAgain: {
-      type: 'array',
-      items: {
-        type: 'string'
+        type: 'object',
+        properties: {
+          attractionType: { type: 'string' },
+          name: { type: 'string' },
+          visitAgain: { type: 'string' }
+        },
+        required: ['attractionType', 'name', 'visitAgain']
       }
     }
   },
-  required: ['username', 'visited', 'visitAgain']
+  required: ['username', 'visited']
 } as const;

@@ -46,8 +46,7 @@ const setUserVisited = async (event: APIGatewayProxyEvent, context: APIGatewayPr
 function mapToRecord(record: record, username: string) {
   const mapped: PutItemInputAttributeMap = {
     username: { S: username },
-    visited: { SS: [JSON.stringify(record.visited)] },
-    visitAgain: { SS: [JSON.stringify(record.visitAgain)] }
+    visited: { SS: [JSON.stringify(record.visited)] }
   }
 
   return mapped;
@@ -55,8 +54,7 @@ function mapToRecord(record: record, username: string) {
 
 export interface record {
   username: string,
-  visited: Array<string>,
-  visitAgain: Array<string>
+  visited: Array<string>
 }
 
 export const main = middyfy(setUserVisited);
